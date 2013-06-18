@@ -21,11 +21,6 @@
 #include <system/camera.h>
 #include "system/camera_metadata.h"
 
-enum {
-
-    HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED = 0x22,
-
-};
 
 /**
  * Camera device HAL 2.0 [ CAMERA_DEVICE_API_VERSION_2_0 ]
