@@ -19,6 +19,7 @@
 
 #include "camera_common.h"
 #include <system/camera.h>
+#include <system/graphics.h>
 #include "system/camera_metadata.h"
 
 
