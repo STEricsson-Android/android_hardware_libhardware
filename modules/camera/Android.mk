@@ -16,24 +16,24 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-ifeq ($(TARGET_QCOM_AUDIO_VARIANT),caf)
-ifeq ($(BOARD_USES_ALSA_AUDIO),true)
-LOCAL_CFLAGS += -DUSE_MMAP
-endif
-endif
-
-ifneq ($(BOARD_USB_AUDIO_CARD_ID),)
-LOCAL_CFLAGS += -DCARD_ID=$(BOARD_USB_AUDIO_CARD_ID)
-endif
-
-LOCAL_MODULE := audio.usb.default
+LOCAL_MODULE := camera.default
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-LOCAL_SRC_FILES := \
-	audio_hw.c
+
 LOCAL_C_INCLUDES += \
-	external/tinyalsa/include
-LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa
+	system/core/include \
+	system/media/camera/include \
+
+LOCAL_SRC_FILES := \
+	CameraHAL.cpp \
+	Camera.cpp \
+
+LOCAL_SHARED_LIBRARIES := \
+	libcamera_metadata \
+	libcutils \
+	liblog \
+
+LOCAL_CFLAGS += -Wall -Wextra -fvisibility=hidden
+
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
-
